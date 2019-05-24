@@ -9,7 +9,7 @@ public class ActivityRegioes extends AppCompatActivity {
 
     private TextView tvRegiao;
     private ImageView ivEsquerda, ivDireita;
-    private String tipo;
+    private String [] estados;
     private String[] regioes;
 
     @Override

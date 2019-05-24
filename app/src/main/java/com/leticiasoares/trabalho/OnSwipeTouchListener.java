@@ -1,4 +1,4 @@
-package br.pro.adalto.quiztouch;
+package com.leticiasoares.trabalho;
 
 
 
@@ -65,6 +65,8 @@ public class OnSwipeTouchListener implements OnTouchListener {
     }
 
     public void onSwipeRight() {
+
+
     }
 
     public void onSwipeLeft() {
