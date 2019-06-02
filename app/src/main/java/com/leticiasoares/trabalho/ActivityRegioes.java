@@ -33,60 +33,48 @@ public class ActivityRegioes extends AppCompatActivity {
         tvEstados = (TextView) findViewById(R.id.tvEstados);
         layout = (LinearLayout)findViewById(R.id.layout);
 
-        regioes = new String[] {
-                "Norte",
-                "Nordeste",
-                "Sul" ,
-                "Sudeste",
-                "Centro-oeste",
-        };
+        regioes = new String[]{
+                "Norte", "Nordeste", "Sul" , "Sudeste", "Centro-oeste"};
 
         estadosNorte = new String[] {
-                "Acre",
-                "Amapa",
-                "Amazonas",
-                "Pará",
-                "Rondônia",
-                "Roraima",
-                "Tocantins"
-        };
+                "Acre", "Amapa", "Amazonas", "Pará", "Rondônia", "Roraima", "Tocantins"};
 
         estadosSul = new String [] {
-                "Paraná",
-                "Santa Catarina",
-                "Rio Grande do Sul"
-        };
+                "Paraná", "Santa Catarina", "Rio Grande do Sul"};
 
         estadosSudeste = new String []{
-                "Espirito Santo",
-                "Minas",
-                "Rio de Janeiro",
-                "Sao Paulo",
-        };
+                "Espirito Santo", "Minas", "Rio de Janeiro", "Sao Paulo"};
         estadosNordeste = new String[] {
-                "Alagoas",
-                "Bahia",
-                "Ceará",
-                "Maranhão",
-                "Paraíba",
-                "Pernambuco",
-                "Piauí"
-        };
+                "Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí"};
         estadosCentroeste = new String[] {
-                "Mato Grosso",
-                "Mato Grosso do Sul",
-                "Goiás",
-                "Distrito Federal"
-        };
+                "Mato Grosso", "Mato Grosso do Sul", "Goiás", "Distrito Federal"};
 
-        public void onSwipeTop(){}
-        public void onSwipeBottom(){}
+        public void onSwipeTop(){
+            super.onSwipeTop();
+           if(contadorRegioes >= regioes.length){
+               contadorRegioes++;
+           } tvRegiao.setText(regioes[contadorRegioes]);
+
+        }
+        public void onSwipeBottom(){
+            super.onSwipeBottom();
+            if(contadorRegioes >= regioes.length){
+                contadorRegioes--;
+            }
+        }
         public void onSwipeLeft(){
             super.onSwipeLeft();
             if(contadorEstados >= estados.length){
                 contadorEstados ++;
-            }tvEstados.setText( estados[contadorEstados);
+            }tvEstados.setText( estados[contadorEstados]);
         }
-        public void onSwipeRight(){}
+        public void onSwipeRight(){
+            super.onSwipeRight();
+            if(contadorEstados >= estados.length){
+                contadorEstados ++;
+            }tvEstados.setText( estados[contadorEstados]);
+
+
+        }
     }
 }
