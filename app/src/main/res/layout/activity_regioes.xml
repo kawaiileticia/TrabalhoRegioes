@@ -8,16 +8,14 @@
     android:orientation="vertical"
     tools:context=".ActivityRegioes">
 
-
-
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:hint="Região"
-    android:id="@+id/tvRegiao"
-    android:background="#dbdbf1"
-    />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Região"
+        android:id="@+id/tvRegioes"
+        android:background="#dbdbf1"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,17 +61,20 @@
 
     </LinearLayout>
 
+
+
     <LinearLayout
-        android:id="@+id/Estados"
+        android:id="@+id/estados"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvEstados"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estados" />
-    </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvEstados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estados" />
+    </LinearLayout>
+</LinearLayout>

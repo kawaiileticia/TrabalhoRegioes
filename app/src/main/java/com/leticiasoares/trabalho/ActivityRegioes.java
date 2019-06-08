@@ -8,19 +8,14 @@ import android.widget.TextView;
 
 public class ActivityRegioes extends AppCompatActivity {
 
-    private TextView tvRegiao;
     private ImageView ivEsquerda, ivDireita;
-    private String [] estadosNorte;
-    private String [] estadosNordeste;
-    private String [] estadosSul;
-    private String [] estadosSudeste;
-    private String [] estadosCentroeste;
-    private String [] regioes;
+    private String[][] estados;
+    private String[] regioes;
 
     private int contadorRegioes;
     private int contadorEstados;
     private LinearLayout layout;
-    private TextView tvregioes;
+    private TextView tvRegioes;
     private TextView tvEstados;
 
     @Override
@@ -29,52 +24,63 @@ public class ActivityRegioes extends AppCompatActivity {
         setContentView(R.layout.activity_regioes);
 
 
-        tvregioes = (TextView) findViewById(R.id.tvRegiao);
+        tvRegioes = (TextView) findViewById(R.id.tvRegioes);
         tvEstados = (TextView) findViewById(R.id.tvEstados);
-        layout = (LinearLayout)findViewById(R.id.layout);
+        layout = (LinearLayout) findViewById(R.id.layout);
+
 
         regioes = new String[]{
-                "Norte", "Nordeste", "Sul" , "Sudeste", "Centro-oeste"};
+                "Norte", "Nordeste", "Sul", "Sudeste", "Centro-oeste"};
 
-        estadosNorte = new String[] {
-                "Acre", "Amapa", "Amazonas", "Pará", "Rondônia", "Roraima", "Tocantins"};
+        estados = new String[][]{
+                {"Acre", "Amapa", "Amazonas", "Pará", "Rondônia", "Roraima", "Tocantins"},
+                {"Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí"},
+                {"Paraná", "Santa Catarina", "Rio Grande do Sul"},
+                {"São Paulo", "Rio de Janeiro","Espírito Santo", "Minas Gerais"},
+                {"Mato Grosso", "Mato Grosso do Sul", "Goiás", "Distrito Federal"}
 
-        estadosSul = new String [] {
-                "Paraná", "Santa Catarina", "Rio Grande do Sul"};
+        };
 
-        estadosSudeste = new String []{
-                "Espirito Santo", "Minas", "Rio de Janeiro", "Sao Paulo"};
-        estadosNordeste = new String[] {
-                "Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí"};
-        estadosCentroeste = new String[] {
-                "Mato Grosso", "Mato Grosso do Sul", "Goiás", "Distrito Federal"};
+        tvRegioes.setText(regioes[contadorRegioes]);
+        tvEstados.setText((estados[contadorRegioes][contadorEstados]));
 
-        public void onSwipeTop(){
-            super.onSwipeTop();
-           if(contadorRegioes >= regioes.length){
-               contadorRegioes++;
-           } tvRegiao.setText(regioes[contadorRegioes]);
+        layout.setOnTouchListener (new OnSwipeTouchListener(this))
+        {
+            public void onSwipeTop() {
+                super.onSwipeTop ();
+                if (contadorRegioes >= regioes.length) {
+                    contadorRegioes++;
+                };
 
-        }
-        public void onSwipeBottom(){
-            super.onSwipeBottom();
-            if(contadorRegioes >= regioes.length){
-                contadorRegioes--;
+                tvRegioes.setText(regioes[contadorRegioes]);
+                contadorEstados = 0;
+                tvEstados.setText(estados[contadorRegioes][contadorEstados]);
+
             }
-        }
-        public void onSwipeLeft(){
-            super.onSwipeLeft();
-            if(contadorEstados >= estados.length){
-                contadorEstados ++;
-            }tvEstados.setText( estados[contadorEstados]);
-        }
-        public void onSwipeRight(){
-            super.onSwipeRight();
-            if(contadorEstados >= estados.length){
-                contadorEstados ++;
-            }tvEstados.setText( estados[contadorEstados]);
-
-
+            public void onSwipeBottom() {
+                super.onSwipeBottom();
+                contadorRegioes++;
+                if (contadorRegioes >= regioes.length) {
+                    contadorRegioes = 0;
+                }
+                tvRegioes.setText(regioes[contadorRegioes]);
+                contadorEstados = 0;
+                tvEstados.setText(estados [contadorRegioes][contadorEstados]);
+            }
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                if (contadorEstados >= estados.length) {
+                    contadorEstados++;
+                }
+                tvEstados.setText(estados[contadorRegioes][contadorEstados]);
+            }
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                if (contadorEstados >= estados.length) {
+                    contadorEstados++;
+                }
+                tvEstados.setText(estados[contadorRegioes][contadorEstados]);
+            }
         }
     }
 }
